@@ -18,7 +18,7 @@ RSpec.describe 'Hello World Application' do
   it 'displays the greeting and triggers the alert' do
     visit('/')
     
-    expect(page).to have_content(puts page.body)
+    expect(page).to have_content('Hello, World!')
 
     fill_in 'greeting', with: 'Hello'
     click_button 'How are you doing?'
