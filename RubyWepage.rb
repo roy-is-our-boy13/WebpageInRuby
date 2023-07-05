@@ -17,7 +17,7 @@ __END__
 
 <html>
     <head>
-        <title>Hello, Wolrd?</title>
+        <title>Hello, Wolrd!</title>
         <script>
         function showAlert() 
         {
@@ -33,7 +33,9 @@ __END__
         <% end %>
 
         <form>
-            <button type = "submit" onclick="showAlert()">How are you doing?</button>
+            <textarea name="greeting" rows="4" cols="50"></textarea>
+                <br>
+                    <button type="submit" onclick="showAlert()">How are you doing?</button>
         </form>
     </body>
 </html>

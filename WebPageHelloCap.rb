@@ -1,27 +1,29 @@
-require 'capybara'
-require 'capybara/dsl'
+require 'sinatra'
 require 'capybara/rspec'
 
-Capybara.default_driver = :selenium_chrome
+Capybara.app = Sinatra::Application
 
-URL = 'http://127.0.0.1:4567/'
+RSpec.describe 'Hello World Application' do
+  include Capybara::DSL
 
-RSpec.configure do |config|
-    config.include Capybara::DSL
-end
+  before(:all) do
+    @server_thread = Thread.new { Sinatra::Application.run! }
+    sleep 1 # Wait for the server to start
+  end
 
-RSpec.describe 'Hello, World!' do
-    before(:each) do
-        visit(URL)
-    end
+  after(:all) do
+    Thread.kill(@server_thread)
+  end
 
-    it 'displays the correct greeting' do
-        expect(page).to have_content('Hello, World!')
-    end
+  it 'displays the greeting and triggers the alert' do
+    visit('/')
+    
+    expect(page).to have_content(puts page.body)
 
-    it 'clicks the button and displays the response' do
-        click_button 'How are you doing?'
-        expect(page).to have_content('You said: How are you doing?')
-    end
+    fill_in 'greeting', with: 'Hello'
+    click_button 'How are you doing?'
 
+    expect(page.driver.browser.switch_to.alert.text).to eq('Good afternoon')
+    page.driver.browser.switch_to.alert.accept
+  end
 end
