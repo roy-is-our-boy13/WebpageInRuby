@@ -17,7 +17,13 @@ __END__
 
 <html>
     <head>
-        <title>Hello, wolrd?</title>
+        <title>Hello, Wolrd?</title>
+        <script>
+        function showAlert() 
+        {
+            alert("Good afternoon");
+        }
+        </script>
     </head>
     <body>
         <h1>Hello, World!</h1>
@@ -27,7 +33,7 @@ __END__
         <% end %>
 
         <form>
-            <button type = "submit">How are you doing?</button>
+            <button type = "submit" onclick="showAlert()">How are you doing?</button>
         </form>
     </body>
 </html>
