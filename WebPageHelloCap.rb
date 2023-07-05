@@ -20,10 +20,16 @@ RSpec.describe 'Hello World Application' do
     
     expect(page).to have_content('Hello, World!')
 
+    
+
+   
+
     fill_in 'greeting', with: 'Hello'
     click_button 'How are you doing?'
-
+    
     expect(page.driver.browser.switch_to.alert.text).to eq('Good afternoon')
     page.driver.browser.switch_to.alert.accept
+
+    
   end
 end
