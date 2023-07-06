@@ -17,7 +17,7 @@ __END__
 
 <!DOCTYPE html>
 
-<html>
+<html style="background-color:DodgerBlue;">
     <head>
         <title>Hello, Wolrd!</title>
         <script>
@@ -29,15 +29,14 @@ __END__
     </head>
     <body>
         <h1>Hello, World!</h1>
+        
 
         <% if @greeting %>
             <p>You said: <%= @greeting %></p>
         <% end %>
 
         <form>
-            <textarea name="greeting" rows="4" cols="50"></textarea>
-                <br>
-                    <button type="submit" onclick="showAlert()">How are you doing?</button>
+            <button><label for="greeting">How are you doing?</label></button>       
         </form>
     </body>
 </html>
